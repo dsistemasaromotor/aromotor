@@ -35,6 +35,18 @@ const fullName = userData?.full_name
       }
   }
 
+  const obtener_cartera_completa = async() => {
+    try{
+      setIsLoading(true)
+      const response = await axios.get(`${apiUrl}get-cartera-completa/`)
+      setClientes(response.data)
+    }catch(error){
+      console.error("Error al obtener datos:", error)
+    } finally {
+      setIsLoading(false)
+    }
+  }
+
   const consultar = async (term, termVendedor, emisionDesde, emisionHasta, venciDesde, venciHasta) => {
     try {
       setIsLoading(true)
@@ -62,7 +74,7 @@ const fullName = userData?.full_name
             <NavBar/>
             <main className="max-w-full mx-auto px-6 py-8">
               <SearchBar consultar={consultar}/>
-              <Table data={clientes} />
+              <Table data={clientes} obtener_cartera_completa={obtener_cartera_completa} />
               <Footer/>
             </main>
         </div>

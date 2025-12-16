@@ -1,6 +1,5 @@
 import {useMemo} from "react"
-import { FileText, FileSpreadsheet } from "lucide-react"
-import { Search } from "lucide-react"
+import { FileText, FileSpreadsheet, FileDown, Download, Search } from "lucide-react"
 import { useSearch } from "../../hooks/useSearch"
 import * as XLSX from 'xlsx'
 import jsPDF from 'jspdf'
@@ -9,21 +8,21 @@ import logoImg from "../../assets/imgLogo.png"
 import Cookie from "js-cookie"
 import {jwtDecode} from 'jwt-decode'
 
-const Table = ({data}) => {
+const Table = ({data, obtener_cartera_completa}) => {
 
 
   const getUserPermissions = () => {
     const token = Cookie.get("access_token");
-    if (!token) return { can_view_cartera: false, can_export_excel_cartera: false, can_export_pdf_cartera: false }
+    if (!token) return { can_view_cartera: false, can_export_excel_cartera: false, can_export_all_cartera: false , can_export_pdf_cartera: false }
     
     try {
       const decoded = jwtDecode(token)
       console.log(decoded);
       
-      return decoded.permisos || { can_view_cartera: false, can_export_excel_cartera: false, can_export_pdf_cartera: false }
+      return decoded.permisos || { can_view_cartera: false, can_export_excel_cartera: false, can_export_all_cartera: false , can_export_pdf_cartera: false }
     } catch (error) {
       console.error("Error decodificando token:", error)
-      return { can_view_cartera: false, can_export_excel_cartera: false, can_export_pdf_cartera: false }
+      return { can_view_cartera: false, can_export_excel_cartera: false, can_export_all_cartera: false , can_export_pdf_cartera: false }
     }
   }
   const userPermissions = getUserPermissions()
@@ -407,6 +406,15 @@ const Table = ({data}) => {
   return (
     <div className="bg-white rounded-xl border border-gray-200 overflow-hidden shadow-sm hover:shadow-md transition-shadow">
       <div className="flex justify-end p-4 space-x-2">
+        {userPermissions.can_export_all_cartera && (
+          <button 
+            className="flex items-center px-4 py-2 bg-gray-400 text-white rounded-md hover:bg-gray-600 transition-colors duration-200 shadow-sm"
+            onClick={() => obtener_cartera_completa()}
+          >
+            <Search className="w-4 h-4 mr-2" />
+            Cartera Completa
+          </button>
+        )}
         {userPermissions.can_export_pdf_cartera && (
           <button 
             className="flex items-center px-4 py-2 bg-red-500 text-white rounded-md hover:bg-red-600 transition-colors duration-200 shadow-sm"
