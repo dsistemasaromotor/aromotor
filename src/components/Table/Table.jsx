@@ -226,6 +226,19 @@ const Table = ({data, obtener_cartera_completa}) => {
       styles: { fontSize: 8, cellPadding: 2 },
       headStyles: { fillColor: [250, 0, 0], textColor: 255, fontStyle: 'bold' },
 
+      didDrawPage: function(data) {
+        doc.setFontSize(8);
+        doc.setFont("helvetica", "normal");
+        
+        const pageText = `pg. ${data.pageNumber}`;
+        const textWidth = doc.getTextWidth(pageText);
+        const pageWidth = doc.internal.pageSize.width;
+        const marginRight = 14; // Margen derecho (ajusta si quieres más espacio)
+        const x = pageWidth - textWidth - marginRight; // Calcula X para alinear a la derecha
+        
+        doc.text(pageText, x, doc.internal.pageSize.height - 10);
+      },
+
       // Pinta en rojo las filas de cuotas vencidas con saldo residual > 0
       // Y pone en negrita las filas de totales del cliente (fila con nombre del cliente) y gris más oscuro solo para esa fila
       // Y asegura que las filas vacías (espacio) tengan fondo blanco
