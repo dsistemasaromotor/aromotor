@@ -132,8 +132,8 @@ const Table = ({data, obtener_cartera_completa}) => {
     const rows = []
 
     data.forEach(clienteData => {
-      const totalCuotasCliente = clienteData.facturas.reduce((sum, f) => sum + f.cuotas.reduce((s, c) => s + c.debit, 0), 0).toFixed(2)
-      const totalSaldoCliente = clienteData.facturas.reduce((sum, f) => sum + f.cuotas.reduce((s, c) => s + c.residual, 0), 0).toFixed(2)
+      const totalCuotasCliente = clienteData.total_facturas?.toFixed(2) || "0.00"
+      const totalSaldoCliente = clienteData.total_pendiente?.toFixed(2) || "0.00"
       const totalPendienteCliente = clienteData.facturas.reduce((sum, f) => sum + f.pendiente, 0)
       const totalChequesValorCliente = clienteData.facturas.reduce((sum, f) => sum + getTotalChequesFactura(f), 0)
       // ✅ valorSinCustodia = pendiente - cheques
@@ -245,8 +245,8 @@ const Table = ({data, obtener_cartera_completa}) => {
     rows.push(['Factura', 'Fecha de Emisión', 'Cuotas', 'Fecha máxima', 'Valor cuota', 'Abono', 'Retención', 'Saldo', 'Valor sin custodia', 'Días'])
 
     data.forEach(clienteData => {
-      const totalCuotasCliente = clienteData.facturas.reduce((sum, f) => sum + f.cuotas.reduce((s, c) => s + c.debit, 0), 0).toFixed(2)
-      const totalSaldoCliente = clienteData.facturas.reduce((sum, f) => sum + f.cuotas.reduce((s, c) => s + c.residual, 0), 0).toFixed(2)
+      const totalCuotasCliente = clienteData.total_facturas?.toFixed(2) || "0.00"
+      const totalSaldoCliente = clienteData.total_pendiente?.toFixed(2) || "0.00"
       const totalPendienteCliente = clienteData.facturas.reduce((sum, f) => sum + f.pendiente, 0)
       const totalChequesValorCliente = clienteData.facturas.reduce((sum, f) => sum + getTotalChequesFactura(f), 0)
       // ✅ valorSinCustodia = pendiente - cheques
@@ -367,10 +367,12 @@ const Table = ({data, obtener_cartera_completa}) => {
                   const clientRows = []
 
                   // Totales del cliente
-                  const totalCuotasCliente = clienteData.facturas.reduce((sum, f) => sum + f.cuotas.reduce((s, c) => s + c.debit, 0), 0).toFixed(2)
-                  const totalSaldoCliente = clienteData.facturas.reduce((sum, f) => sum + f.cuotas.reduce((s, c) => s + c.residual, 0), 0).toFixed(2)
+                  const totalCuotasCliente = clienteData.total_facturas?.toFixed(2) || "0.00"
+                  const totalSaldoCliente = clienteData.total_pendiente?.toFixed(2) || "0.00"
                   const totalPendienteCliente = clienteData.facturas.reduce((sum, f) => sum + f.pendiente, 0)
                   const totalChequesValorCliente = clienteData.facturas.reduce((sum, f) => sum + getTotalChequesFactura(f), 0)
+
+                  
                   // ✅ valorSinCustodia cliente = pendiente total - cheques total
                   const valorSinCustodiaCliente = (totalPendienteCliente - totalChequesValorCliente).toFixed(2)
 
