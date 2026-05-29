@@ -27,6 +27,48 @@ const modules = [
     permission: "can_view_cartera",  // Clave del permiso requerido para ver este módulo
   },
   {
+    id: "cobranzas",
+    name: "Cobranzas",
+    description: "Presupuesto de Cobranzas",
+    icon: (
+      <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth={2}
+          d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"
+        />
+      </svg>
+    ),
+    color: "from-emerald-500 to-teal-600",
+    bgColor: "from-emerald-50 to-teal-100",
+    textColor: "text-emerald-600",
+    hoverTextColor: "group-hover:text-emerald-700",
+    path: "/cobranzas",
+    permission: "can_view_cartera",  // Clave del permiso requerido para ver este módulo
+  },
+  {
+    id: "kardex",
+    name: "Kardex",
+    description: "Control de inventario y valorización de productos",
+     icon: (
+      <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth={2}
+          d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"
+        />
+      </svg>
+    ),
+    color: "from-amber-500 to-orange-600",
+    bgColor: "from-amber-50 to-orange-100",
+    textColor: "text-amber-600",
+    hoverTextColor: "group-hover:text-amber-700",
+    path: "/kardex",
+    permission: "can_view_kardex",
+  },
+  {
     id: "ajustes",
     name: "Ajustes",
     description: "Configura los parámetros de tu aplicación",
