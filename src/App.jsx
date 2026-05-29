@@ -10,6 +10,7 @@ import Usuarios from './pages/Usuarios'
 import SetPassword from './pages/SetPassword'
 import EditarUsuario from './pages/EditarUsuario'
 import CrearUsuario from './pages/CrearUsuario'
+import Kardex from './pages/Kardex'
 
 function App() {
 
@@ -22,6 +23,18 @@ function App() {
             element={
               <PrivateRoute>
                   <Dashboard />
+              </PrivateRoute>
+            }
+          />
+
+
+          <Route
+            path="/kardex"
+            element={
+              <PrivateRoute>
+                <SearchProvider>
+                  <Kardex/>
+                </SearchProvider>
               </PrivateRoute>
             }
           />
