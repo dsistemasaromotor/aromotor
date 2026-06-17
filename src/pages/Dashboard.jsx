@@ -69,6 +69,27 @@ const modules = [
     permission: "can_view_kardex",
   },
   {
+    id: "valoracion-inventario",
+    name: "Valoración Inventario",
+    description: "Valoración de existencias por ubicación a una fecha de corte",
+    icon: (
+      <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth={2}
+          d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+        />
+      </svg>
+    ),
+    color: "from-violet-500 to-purple-600",
+    bgColor: "from-violet-50 to-purple-100",
+    textColor: "text-violet-600",
+    hoverTextColor: "group-hover:text-violet-700",
+    path: "/reporte-valoracion-ubicacion",
+    permission: "can_view_valoracion_inventario",
+  },
+  {
     id: "ajustes",
     name: "Ajustes",
     description: "Configura los parámetros de tu aplicación",
