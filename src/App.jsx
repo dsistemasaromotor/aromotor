@@ -11,6 +11,7 @@ import SetPassword from './pages/SetPassword'
 import EditarUsuario from './pages/EditarUsuario'
 import CrearUsuario from './pages/CrearUsuario'
 import Kardex from './pages/Kardex'
+import RepValoracionUbicacion from './pages/RepValoracionUbicacion'
 
 function App() {
 
@@ -32,9 +33,16 @@ function App() {
             path="/kardex"
             element={
               <PrivateRoute>
-                <SearchProvider>
                   <Kardex/>
-                </SearchProvider>
+              </PrivateRoute>
+            }
+          />
+
+          <Route
+            path="/reporte-valoracion-ubicacion"
+            element={
+              <PrivateRoute>
+                  <RepValoracionUbicacion/>
               </PrivateRoute>
             }
           />
