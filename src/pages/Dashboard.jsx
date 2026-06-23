@@ -90,6 +90,48 @@ const modules = [
     permission: "can_view_valoracion_inventario",
   },
   {
+    id: "score-crediticio",
+    name: "Score Crediticio",
+    description: "Clientes con opción a aplicación de cupo",
+    icon: (
+      <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth={2}
+          d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+        />
+      </svg>
+    ),
+    color: "from-rose-500 to-pink-600",
+    bgColor: "from-rose-50 to-pink-100",
+    textColor: "text-rose-600",
+    hoverTextColor: "group-hover:text-rose-700",
+    path: "/score-crediticio",
+    permission: "can_view_credit_scoring",
+  },
+  {
+    id: "consulta-score-cliente",
+    name: "Consultar Score Cliente",
+    description: "Consulta el score crediticio individual de un cliente",
+    icon: (
+      <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth={2}
+          d="M11 17a6 6 0 100-12 6 6 0 000 12zm0 0l-1.5 4M11 17l1.5 4M16.65 16.65L21 21"
+        />
+      </svg>
+    ),
+    color: "from-sky-500 to-cyan-600",
+    bgColor: "from-sky-50 to-cyan-100",
+    textColor: "text-sky-600",
+    hoverTextColor: "group-hover:text-sky-700",
+    path: "/consultar-score",
+    permission: "can_view_credit_scoring",
+  },
+  {
     id: "ajustes",
     name: "Ajustes",
     description: "Configura los parámetros de tu aplicación",
