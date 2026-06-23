@@ -12,6 +12,8 @@ import EditarUsuario from './pages/EditarUsuario'
 import CrearUsuario from './pages/CrearUsuario'
 import Kardex from './pages/Kardex'
 import RepValoracionUbicacion from './pages/RepValoracionUbicacion'
+import ScoreCrediticio from './pages/ScoreCrediticio'
+import ConsultarScore from './pages/ConsultarScore'
 
 function App() {
 
@@ -34,6 +36,24 @@ function App() {
             element={
               <PrivateRoute>
                   <Kardex/>
+              </PrivateRoute>
+            }
+          />
+          
+          <Route
+            path="/score-crediticio"
+            element={
+              <PrivateRoute>
+                  <ScoreCrediticio/>
+              </PrivateRoute>
+            }
+          />
+
+          <Route
+            path="/consultar-score"
+            element={
+              <PrivateRoute>
+                  <ConsultarScore/>
               </PrivateRoute>
             }
           />
