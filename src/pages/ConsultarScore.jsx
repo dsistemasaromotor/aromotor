@@ -24,8 +24,8 @@ const ConsultarScore = () => {
             ? "0.00"
             : Number(n).toLocaleString("es-EC", { minimumFractionDigits: 2, maximumFractionDigits: 2 })
 
-    const fmtPct = (n) =>
-        n === null || n === undefined || n === "" ? "—" : `${Number(n).toFixed(1)}%`
+    const fmtPct = (n, decimals = 1) =>
+        n === null || n === undefined || n === "" ? "—" : `${Number(n).toFixed(decimals)}%`
 
     const riesgoBadge = (nivel) => {
         const estilos = {
@@ -136,9 +136,9 @@ const ConsultarScore = () => {
 
                             <div className="bg-white border border-gray-200 rounded-2xl p-5 shadow-sm">
                                 <div className="flex items-center justify-between text-gray-500 text-sm">
-                                    Deuda Real <ShieldCheck size={16} className="text-gray-400" />
+                                    Saldo Total <ShieldCheck size={16} className="text-gray-400" />
                                 </div>
-                                <p className="text-3xl font-bold text-gray-900 mt-3">${fmtMoney(data.deuda_real)}</p>
+                                <p className="text-3xl font-bold text-gray-900 mt-3">${fmtMoney(data.saldo_total)}</p>
                             </div>
 
                             <div className="bg-white border border-gray-200 rounded-2xl p-5 shadow-sm">
@@ -177,12 +177,12 @@ const ConsultarScore = () => {
 
                             <div className="px-6 py-5 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                                 <div>
-                                    <p className="text-xs text-gray-400">Saldo Total</p>
-                                    <p className="text-sm font-semibold text-gray-800 mt-1">${fmtMoney(data.saldo_total)}</p>
+                                    <p className="text-xs text-gray-400">Deuda Real</p>
+                                    <p className="text-sm font-semibold text-gray-800 mt-1">${fmtMoney(data.deuda_real)}</p>
                                 </div>
                                 <div>
                                     <p className="text-xs text-gray-400">Cheques en Custodia</p>
-                                    <p className="text-sm font-semibold text-gray-800 mt-1">{data.cheques_custodia}</p>
+                                    <p className="text-sm font-semibold text-gray-800 mt-1">${fmtMoney(data.cheques_custodia)}</p>
                                 </div>
                                 <div>
                                     <p className="text-xs text-gray-400">Recomendación</p>
@@ -205,6 +205,10 @@ const ConsultarScore = () => {
                                 <div>
                                     <p className="text-xs text-gray-400">Frecuencia Notas de Crédito</p>
                                     <p className="text-sm font-semibold text-gray-800 mt-1">{fmtPct((data.detalle_score?.frecuencia_nc_ratio ?? 0) * 100)}</p>
+                                </div>
+                                <div>
+                                    <p className="text-xs text-gray-400">Monto Notas de Crédito</p>
+                                    <p className="text-sm font-semibold text-gray-800 mt-1">{fmtPct((data.detalle_score?.monto_nc_ratio ?? 0) * 100, 2)}</p>
                                 </div>
                                 <div>
                                     <p className="text-xs text-gray-400">Antigüedad</p>
