@@ -129,9 +129,9 @@ const ConsultarScore = () => {
                         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
                             <div className="bg-white border border-gray-200 rounded-2xl p-5 shadow-sm">
                                 <div className="flex items-center justify-between text-gray-500 text-sm">
-                                    Cupo Actual <ShieldCheck size={16} className="text-gray-400" />
+                                    Cupo Extendido <ShieldCheck size={16} className="text-gray-400" />
                                 </div>
-                                <p className="text-3xl font-bold text-gray-900 mt-3">${fmtMoney(data.credit_limit_actual)}</p>
+                                <p className="text-3xl font-bold text-gray-900 mt-3">${fmtMoney(data.cupo_aprobado)}</p>
                             </div>
 
                             <div className="bg-white border border-gray-200 rounded-2xl p-5 shadow-sm">
@@ -161,7 +161,7 @@ const ConsultarScore = () => {
                             <div className="px-6 py-5 border-b border-gray-200 flex items-center justify-between flex-wrap gap-3">
                                 <div>
                                     <h3 className="text-base font-semibold text-gray-900">{data.nombre}</h3>
-                                    <p className="text-xs text-gray-400 mt-0.5">ID Cliente: {data.partner_id}</p>
+                                    <p className="text-xs text-gray-400 mt-0.5">Cupo Aprobado: ${fmtMoney(data.credit_limit_actual)}</p>
                                 </div>
 
                                 <div className="flex items-center gap-2">
@@ -177,7 +177,7 @@ const ConsultarScore = () => {
 
                             <div className="px-6 py-5 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                                 <div>
-                                    <p className="text-xs text-gray-400">Deuda Real</p>
+                                    <p className="text-xs text-gray-400">Valor sin Custodia</p>
                                     <p className="text-sm font-semibold text-gray-800 mt-1">${fmtMoney(data.deuda_real)}</p>
                                 </div>
                                 <div>
