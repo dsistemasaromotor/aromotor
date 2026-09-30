@@ -13,8 +13,36 @@ export function SearchProvider({ children }) {
   const [fechaVenciHasta, setFechaVenciHasta] = useState("")
   const [isLoading, setIsLoading] = useState(true)
 
+  const [searchCobVendedor, setSearchCobVendedor] = useState("")
+  const [fechaEmisionDesdeCob, setFechaEmisionDesdeCob] = useState("")
+  const [fechaEmisionHastaCob, setFechaEmisionHastaCob] = useState("")
+
   return (
-    <SearchContext.Provider value={{clientes, setClientes, searchTerm, setSearchTerm, isLoading, setIsLoading, searchTermVendedor, setSearchTermVendedor, fechaEmisionDesde, setFechaEmisionDesde, fechaEmisionHasta, setFechaEmisionHasta, fechaVenciDesde, setFechaVenciDesde, fechaVenciHasta, setFechaVenciHasta}}>
+    <SearchContext.Provider value={
+      {clientes, 
+        setClientes, 
+        searchTerm, 
+        setSearchTerm, 
+        isLoading, 
+        setIsLoading, 
+        searchTermVendedor, 
+        setSearchTermVendedor, 
+        fechaEmisionDesde, 
+        setFechaEmisionDesde, 
+        fechaEmisionHasta, 
+        setFechaEmisionHasta, 
+        fechaVenciDesde, 
+        setFechaVenciDesde, 
+        fechaVenciHasta, 
+        setFechaVenciHasta,
+        searchCobVendedor, 
+        setSearchCobVendedor,
+        fechaEmisionDesdeCob, 
+        setFechaEmisionDesdeCob,
+        fechaEmisionHastaCob, 
+        setFechaEmisionHastaCob,
+      }
+    }>
       {children}
     </SearchContext.Provider>
   )
